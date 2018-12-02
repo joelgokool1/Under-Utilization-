@@ -1,0 +1,337 @@
+Sex,Ethnic Grp,EEO-4 Cat,EEO-4 Description,Estab ID,OccGrpDesc,Count(*)
+F,AMERIND,6,Office/Clerical,NYCTRANSIT,Hourly Occupational,3
+F,AMERIND,1,Officials/Administrators,NYCTRANSIT,Operating Supervisors,1
+F,AMERIND,8,Service Maintenance,NYCTRANSIT,Hourly Occupational,2
+F,AMERIND,7,Skilled Craft,NYCTRANSIT,Hourly Occupational,3
+F,AMERIND,3,Technicians,NYCTRANSIT,Other Professional & Technical,1
+F,ASIAN,6,Office/Clerical,MABSTOA,Administrative & Clerical,16
+F,ASIAN,6,Office/Clerical,MABSTOA,Hourly Occupational,1
+F,ASIAN,6,Office/Clerical,MABSTOA,Other Professional & Technical,1
+F,ASIAN,6,Office/Clerical,NYCTRANSIT,Administrative & Clerical,28
+F,ASIAN,6,Office/Clerical,NYCTRANSIT,Hourly Occupational,68
+F,ASIAN,1,Officials/Administrators,MABSTOA,Managerial,11
+F,ASIAN,1,Officials/Administrators,MABSTOA,Other Professional & Technical,3
+F,ASIAN,1,Officials/Administrators,NYCTRANSIT,Managerial,40
+F,ASIAN,1,Officials/Administrators,NYCTRANSIT,Operating Supervisors,17
+F,ASIAN,1,Officials/Administrators,SIRTOA,Managerial,1
+F,ASIAN,5,Paraprofessional,MABSTOA,Other Professional & Technical,3
+F,ASIAN,2,Professionals,MABSTOA,Engineering,14
+F,ASIAN,2,Professionals,MABSTOA,Other Professional & Technical,71
+F,ASIAN,2,Professionals,NYCTRANSIT,Engineering,21
+F,ASIAN,2,Professionals,NYCTRANSIT,Other Professional & Technical,73
+F,ASIAN,8,Service Maintenance,MABSTOA,Hourly Occupational,12
+F,ASIAN,8,Service Maintenance,NYCTRANSIT,Hourly Occupational,27
+F,ASIAN,7,Skilled Craft,NYCTRANSIT,Hourly Occupational,22
+F,ASIAN,3,Technicians,MABSTOA,Other Professional & Technical,1
+F,ASIAN,3,Technicians,NYCTRANSIT,Other Professional & Technical,8
+F,BLACK,6,Office/Clerical,MABSTOA,Administrative & Clerical,98
+F,BLACK,6,Office/Clerical,MABSTOA,Hourly Occupational,119
+F,BLACK,6,Office/Clerical,MABSTOA,Other Professional & Technical,8
+F,BLACK,6,Office/Clerical,NYCTRANSIT,Administrative & Clerical,127
+F,BLACK,6,Office/Clerical,NYCTRANSIT,Hourly Occupational,986
+F,BLACK,6,Office/Clerical,SIRTOA,Administrative & Clerical,1
+F,BLACK,6,Office/Clerical,SIRTOA,Engineering,2
+F,BLACK,1,Officials/Administrators,MABSTOA,Managerial,88
+F,BLACK,1,Officials/Administrators,MABSTOA,Operating Supervisors,44
+F,BLACK,1,Officials/Administrators,MABSTOA,Other Professional & Technical,8
+F,BLACK,1,Officials/Administrators,NYCTRANSIT,Managerial,175
+F,BLACK,1,Officials/Administrators,NYCTRANSIT,Operating Supervisors,526
+F,BLACK,1,Officials/Administrators,NYCTRANSIT,Other Professional & Technical,1
+F,BLACK,1,Officials/Administrators,SIRTOA,Hourly Occupational,1
+F,BLACK,1,Officials/Administrators,SIRTOA,Managerial,1
+F,BLACK,5,Paraprofessional,MABSTOA,Other Professional & Technical,11
+F,BLACK,5,Paraprofessional,NYCTRANSIT,Other Professional & Technical,3
+F,BLACK,2,Professionals,MABSTOA,Engineering,8
+F,BLACK,2,Professionals,MABSTOA,Other Professional & Technical,258
+F,BLACK,2,Professionals,NYCTRANSIT,Administrative & Clerical,19
+F,BLACK,2,Professionals,NYCTRANSIT,Engineering,10
+F,BLACK,2,Professionals,NYCTRANSIT,Other Professional & Technical,142
+F,BLACK,2,Professionals,SIRTOA,Other Professional & Technical,1
+F,BLACK,4,Protective Service,MABSTOA,Hourly Occupational,11
+F,BLACK,4,Protective Service,NYCTRANSIT,Hourly Occupational,50
+F,BLACK,8,Service Maintenance,MABSTOA,Hourly Occupational,406
+F,BLACK,8,Service Maintenance,NYCTRANSIT,Hourly Occupational,2288
+F,BLACK,8,Service Maintenance,SIRTOA,Hourly Occupational,15
+F,BLACK,7,Skilled Craft,NYCTRANSIT,Hourly Occupational,633
+F,BLACK,7,Skilled Craft,SIRTOA,Hourly Occupational,6
+F,BLACK,3,Technicians,MABSTOA,Other Professional & Technical,35
+F,BLACK,3,Technicians,NYCTRANSIT,Other Professional & Technical,68
+F,HISPANIC,6,Office/Clerical,MABSTOA,Administrative & Clerical,34
+F,HISPANIC,6,Office/Clerical,MABSTOA,Hourly Occupational,9
+F,HISPANIC,6,Office/Clerical,MABSTOA,Other Professional & Technical,3
+F,HISPANIC,6,Office/Clerical,NYCTRANSIT,Administrative & Clerical,32
+F,HISPANIC,6,Office/Clerical,NYCTRANSIT,Hourly Occupational,156
+F,HISPANIC,6,Office/Clerical,SIRTOA,Engineering,1
+F,HISPANIC,1,Officials/Administrators,MABSTOA,Managerial,27
+F,HISPANIC,1,Officials/Administrators,MABSTOA,Operating Supervisors,20
+F,HISPANIC,1,Officials/Administrators,MABSTOA,Other Professional & Technical,1
+F,HISPANIC,1,Officials/Administrators,NYCTRANSIT,Managerial,27
+F,HISPANIC,1,Officials/Administrators,NYCTRANSIT,Operating Supervisors,48
+F,HISPANIC,1,Officials/Administrators,SIRTOA,Managerial,2
+F,HISPANIC,1,Officials/Administrators,SIRTOA,Operating Supervisors,1
+F,HISPANIC,5,Paraprofessional,MABSTOA,Other Professional & Technical,6
+F,HISPANIC,5,Paraprofessional,NYCTRANSIT,Other Professional & Technical,2
+F,HISPANIC,2,Professionals,MABSTOA,Engineering,3
+F,HISPANIC,2,Professionals,MABSTOA,Other Professional & Technical,64
+F,HISPANIC,2,Professionals,NYCTRANSIT,Administrative & Clerical,2
+F,HISPANIC,2,Professionals,NYCTRANSIT,Engineering,9
+F,HISPANIC,2,Professionals,NYCTRANSIT,Other Professional & Technical,42
+F,HISPANIC,2,Professionals,SIRTOA,Other Professional & Technical,1
+F,HISPANIC,4,Protective Service,MABSTOA,Hourly Occupational,4
+F,HISPANIC,4,Protective Service,NYCTRANSIT,Hourly Occupational,8
+F,HISPANIC,8,Service Maintenance,MABSTOA,Hourly Occupational,196
+F,HISPANIC,8,Service Maintenance,NYCTRANSIT,Hourly Occupational,486
+F,HISPANIC,8,Service Maintenance,SIRTOA,Hourly Occupational,3
+F,HISPANIC,7,Skilled Craft,NYCTRANSIT,Hourly Occupational,75
+F,HISPANIC,7,Skilled Craft,SIRTOA,Hourly Occupational,2
+F,HISPANIC,3,Technicians,MABSTOA,Engineering,1
+F,HISPANIC,3,Technicians,MABSTOA,Other Professional & Technical,10
+F,HISPANIC,3,Technicians,NYCTRANSIT,Other Professional & Technical,12
+F,NHOPI,6,Office/Clerical,NYCTRANSIT,Hourly Occupational,2
+F,NHOPI,4,Protective Service,NYCTRANSIT,Hourly Occupational,1
+F,NHOPI,8,Service Maintenance,NYCTRANSIT,Hourly Occupational,1
+F,NOTSPEC,6,Office/Clerical,MABSTOA,Administrative & Clerical,1
+F,NOTSPEC,6,Office/Clerical,NYCTRANSIT,Hourly Occupational,2
+F,NOTSPEC,1,Officials/Administrators,NYCTRANSIT,Operating Supervisors,2
+F,NOTSPEC,8,Service Maintenance,MABSTOA,Hourly Occupational,3
+F,NOTSPEC,8,Service Maintenance,NYCTRANSIT,Hourly Occupational,19
+F,NOTSPEC,7,Skilled Craft,NYCTRANSIT,Hourly Occupational,2
+F,OTHER,6,Office/Clerical,MABSTOA,Administrative & Clerical,6
+F,OTHER,6,Office/Clerical,MABSTOA,Hourly Occupational,2
+F,OTHER,6,Office/Clerical,MABSTOA,Other Professional & Technical,1
+F,OTHER,6,Office/Clerical,NYCTRANSIT,Administrative & Clerical,7
+F,OTHER,6,Office/Clerical,NYCTRANSIT,Hourly Occupational,21
+F,OTHER,1,Officials/Administrators,MABSTOA,Managerial,10
+F,OTHER,1,Officials/Administrators,MABSTOA,Operating Supervisors,1
+F,OTHER,1,Officials/Administrators,MABSTOA,Other Professional & Technical,1
+F,OTHER,1,Officials/Administrators,NYCTRANSIT,Managerial,12
+F,OTHER,1,Officials/Administrators,NYCTRANSIT,Operating Supervisors,20
+F,OTHER,5,Paraprofessional,MABSTOA,Other Professional & Technical,1
+F,OTHER,2,Professionals,MABSTOA,Engineering,1
+F,OTHER,2,Professionals,MABSTOA,Other Professional & Technical,20
+F,OTHER,2,Professionals,NYCTRANSIT,Engineering,3
+F,OTHER,2,Professionals,NYCTRANSIT,Other Professional & Technical,16
+F,OTHER,4,Protective Service,NYCTRANSIT,Hourly Occupational,2
+F,OTHER,8,Service Maintenance,MABSTOA,Hourly Occupational,8
+F,OTHER,8,Service Maintenance,NYCTRANSIT,Hourly Occupational,45
+F,OTHER,7,Skilled Craft,NYCTRANSIT,Hourly Occupational,20
+F,OTHER,7,Skilled Craft,SIRTOA,Hourly Occupational,1
+F,OTHER,3,Technicians,NYCTRANSIT,Other Professional & Technical,2
+F,WHITE,6,Office/Clerical,MABSTOA,Administrative & Clerical,30
+F,WHITE,6,Office/Clerical,MABSTOA,Hourly Occupational,3
+F,WHITE,6,Office/Clerical,NYCTRANSIT,Administrative & Clerical,22
+F,WHITE,6,Office/Clerical,NYCTRANSIT,Hourly Occupational,62
+F,WHITE,6,Office/Clerical,SIRTOA,Administrative & Clerical,6
+F,WHITE,6,Office/Clerical,SIRTOA,Engineering,1
+F,WHITE,1,Officials/Administrators,MABSTOA,Managerial,64
+F,WHITE,1,Officials/Administrators,MABSTOA,Operating Supervisors,7
+F,WHITE,1,Officials/Administrators,MABSTOA,Other Professional & Technical,2
+F,WHITE,1,Officials/Administrators,NYCTRANSIT,Hourly Occupational,1
+F,WHITE,1,Officials/Administrators,NYCTRANSIT,Managerial,90
+F,WHITE,1,Officials/Administrators,NYCTRANSIT,Operating Supervisors,29
+F,WHITE,1,Officials/Administrators,NYCTRANSIT,Other Professional & Technical,2
+F,WHITE,1,Officials/Administrators,SIRTOA,Hourly Occupational,2
+F,WHITE,1,Officials/Administrators,SIRTOA,Managerial,1
+F,WHITE,1,Officials/Administrators,SIRTOA,Operating Supervisors,1
+F,WHITE,5,Paraprofessional,MABSTOA,Other Professional & Technical,2
+F,WHITE,2,Professionals,MABSTOA,Engineering,9
+F,WHITE,2,Professionals,MABSTOA,Other Professional & Technical,93
+F,WHITE,2,Professionals,NYCTRANSIT,Administrative & Clerical,1
+F,WHITE,2,Professionals,NYCTRANSIT,Engineering,20
+F,WHITE,2,Professionals,NYCTRANSIT,Other Professional & Technical,80
+F,WHITE,2,Professionals,SIRTOA,Other Professional & Technical,1
+F,WHITE,4,Protective Service,NYCTRANSIT,Hourly Occupational,6
+F,WHITE,8,Service Maintenance,MABSTOA,Hourly Occupational,17
+F,WHITE,8,Service Maintenance,NYCTRANSIT,Hourly Occupational,137
+F,WHITE,8,Service Maintenance,SIRTOA,Hourly Occupational,3
+F,WHITE,7,Skilled Craft,NYCTRANSIT,Hourly Occupational,43
+F,WHITE,7,Skilled Craft,SIRTOA,Hourly Occupational,3
+F,WHITE,3,Technicians,MABSTOA,Other Professional & Technical,9
+F,WHITE,3,Technicians,NYCTRANSIT,Other Professional & Technical,10
+M,AMERIND,6,Office/Clerical,MABSTOA,Hourly Occupational,2
+M,AMERIND,6,Office/Clerical,NYCTRANSIT,Hourly Occupational,3
+M,AMERIND,1,Officials/Administrators,MABSTOA,Managerial,1
+M,AMERIND,1,Officials/Administrators,MABSTOA,Operating Supervisors,3
+M,AMERIND,1,Officials/Administrators,NYCTRANSIT,Managerial,7
+M,AMERIND,1,Officials/Administrators,NYCTRANSIT,Operating Supervisors,13
+M,AMERIND,2,Professionals,MABSTOA,Other Professional & Technical,1
+M,AMERIND,2,Professionals,NYCTRANSIT,Other Professional & Technical,2
+M,AMERIND,8,Service Maintenance,MABSTOA,Hourly Occupational,2
+M,AMERIND,8,Service Maintenance,NYCTRANSIT,Hourly Occupational,21
+M,AMERIND,7,Skilled Craft,MABSTOA,Hourly Occupational,3
+M,AMERIND,7,Skilled Craft,NYCTRANSIT,Hourly Occupational,21
+M,ASIAN,6,Office/Clerical,MABSTOA,Administrative & Clerical,35
+M,ASIAN,6,Office/Clerical,MABSTOA,Hourly Occupational,15
+M,ASIAN,6,Office/Clerical,NYCTRANSIT,Administrative & Clerical,43
+M,ASIAN,6,Office/Clerical,NYCTRANSIT,Hourly Occupational,557
+M,ASIAN,1,Officials/Administrators,MABSTOA,Managerial,42
+M,ASIAN,1,Officials/Administrators,MABSTOA,Operating Supervisors,56
+M,ASIAN,1,Officials/Administrators,MABSTOA,Other Professional & Technical,1
+M,ASIAN,1,Officials/Administrators,NYCTRANSIT,Hourly Occupational,3
+M,ASIAN,1,Officials/Administrators,NYCTRANSIT,Managerial,226
+M,ASIAN,1,Officials/Administrators,NYCTRANSIT,Operating Supervisors,713
+M,ASIAN,1,Officials/Administrators,SIRTOA,Managerial,1
+M,ASIAN,1,Officials/Administrators,SIRTOA,Operating Supervisors,1
+M,ASIAN,5,Paraprofessional,MABSTOA,Other Professional & Technical,1
+M,ASIAN,5,Paraprofessional,NYCTRANSIT,Other Professional & Technical,1
+M,ASIAN,2,Professionals,MABSTOA,Engineering,55
+M,ASIAN,2,Professionals,MABSTOA,Other Professional & Technical,108
+M,ASIAN,2,Professionals,NYCTRANSIT,Engineering,196
+M,ASIAN,2,Professionals,NYCTRANSIT,Other Professional & Technical,163
+M,ASIAN,2,Professionals,SIRTOA,Other Professional & Technical,1
+M,ASIAN,4,Protective Service,MABSTOA,Hourly Occupational,2
+M,ASIAN,4,Protective Service,NYCTRANSIT,Hourly Occupational,23
+M,ASIAN,8,Service Maintenance,MABSTOA,Hourly Occupational,212
+M,ASIAN,8,Service Maintenance,NYCTRANSIT,Hourly Occupational,713
+M,ASIAN,8,Service Maintenance,SIRTOA,Hourly Occupational,5
+M,ASIAN,7,Skilled Craft,MABSTOA,Hourly Occupational,126
+M,ASIAN,7,Skilled Craft,MABSTOA,Other Professional & Technical,1
+M,ASIAN,7,Skilled Craft,NYCTRANSIT,Hourly Occupational,1860
+M,ASIAN,7,Skilled Craft,SIRTOA,Hourly Occupational,5
+M,ASIAN,3,Technicians,MABSTOA,Engineering,1
+M,ASIAN,3,Technicians,MABSTOA,Other Professional & Technical,14
+M,ASIAN,3,Technicians,NYCTRANSIT,Engineering,2
+M,ASIAN,3,Technicians,NYCTRANSIT,Other Professional & Technical,18
+M,BLACK,6,Office/Clerical,MABSTOA,Administrative & Clerical,32
+M,BLACK,6,Office/Clerical,MABSTOA,Hourly Occupational,116
+M,BLACK,6,Office/Clerical,MABSTOA,Other Professional & Technical,3
+M,BLACK,6,Office/Clerical,NYCTRANSIT,Administrative & Clerical,29
+M,BLACK,6,Office/Clerical,NYCTRANSIT,Hourly Occupational,855
+M,BLACK,6,Office/Clerical,SIRTOA,Hourly Occupational,2
+M,BLACK,1,Officials/Administrators,MABSTOA,Managerial,104
+M,BLACK,1,Officials/Administrators,MABSTOA,Operating Supervisors,191
+M,BLACK,1,Officials/Administrators,NYCTRANSIT,Hourly Occupational,9
+M,BLACK,1,Officials/Administrators,NYCTRANSIT,Managerial,329
+M,BLACK,1,Officials/Administrators,NYCTRANSIT,Operating Supervisors,1373
+M,BLACK,1,Officials/Administrators,NYCTRANSIT,Other Professional & Technical,2
+M,BLACK,1,Officials/Administrators,SIRTOA,Hourly Occupational,4
+M,BLACK,1,Officials/Administrators,SIRTOA,Managerial,1
+M,BLACK,1,Officials/Administrators,SIRTOA,Operating Supervisors,1
+M,BLACK,5,Paraprofessional,MABSTOA,Other Professional & Technical,3
+M,BLACK,5,Paraprofessional,NYCTRANSIT,Other Professional & Technical,8
+M,BLACK,2,Professionals,MABSTOA,Engineering,21
+M,BLACK,2,Professionals,MABSTOA,Other Professional & Technical,148
+M,BLACK,2,Professionals,NYCTRANSIT,Engineering,114
+M,BLACK,2,Professionals,NYCTRANSIT,Other Professional & Technical,151
+M,BLACK,4,Protective Service,MABSTOA,Hourly Occupational,39
+M,BLACK,4,Protective Service,NYCTRANSIT,Hourly Occupational,104
+M,BLACK,8,Service Maintenance,MABSTOA,Hourly Occupational,1923
+M,BLACK,8,Service Maintenance,NYCTRANSIT,Administrative & Clerical,1
+M,BLACK,8,Service Maintenance,NYCTRANSIT,Hourly Occupational,6452
+M,BLACK,8,Service Maintenance,SIRTOA,Hourly Occupational,23
+M,BLACK,7,Skilled Craft,MABSTOA,Hourly Occupational,282
+M,BLACK,7,Skilled Craft,MABSTOA,Other Professional & Technical,2
+M,BLACK,7,Skilled Craft,NYCTRANSIT,Hourly Occupational,4550
+M,BLACK,7,Skilled Craft,SIRTOA,Hourly Occupational,22
+M,BLACK,3,Technicians,MABSTOA,Other Professional & Technical,25
+M,BLACK,3,Technicians,NYCTRANSIT,Other Professional & Technical,30
+M,HISPANIC,6,Office/Clerical,MABSTOA,Administrative & Clerical,16
+M,HISPANIC,6,Office/Clerical,MABSTOA,Hourly Occupational,30
+M,HISPANIC,6,Office/Clerical,NYCTRANSIT,Administrative & Clerical,10
+M,HISPANIC,6,Office/Clerical,NYCTRANSIT,Hourly Occupational,328
+M,HISPANIC,6,Office/Clerical,SIRTOA,Administrative & Clerical,1
+M,HISPANIC,1,Officials/Administrators,MABSTOA,Managerial,65
+M,HISPANIC,1,Officials/Administrators,MABSTOA,Operating Supervisors,149
+M,HISPANIC,1,Officials/Administrators,NYCTRANSIT,Hourly Occupational,5
+M,HISPANIC,1,Officials/Administrators,NYCTRANSIT,Managerial,133
+M,HISPANIC,1,Officials/Administrators,NYCTRANSIT,Operating Supervisors,468
+M,HISPANIC,1,Officials/Administrators,SIRTOA,Hourly Occupational,3
+M,HISPANIC,1,Officials/Administrators,SIRTOA,Managerial,3
+M,HISPANIC,1,Officials/Administrators,SIRTOA,Operating Supervisors,2
+M,HISPANIC,5,Paraprofessional,MABSTOA,Other Professional & Technical,3
+M,HISPANIC,5,Paraprofessional,NYCTRANSIT,Other Professional & Technical,1
+M,HISPANIC,2,Professionals,MABSTOA,Engineering,11
+M,HISPANIC,2,Professionals,MABSTOA,Other Professional & Technical,55
+M,HISPANIC,2,Professionals,NYCTRANSIT,Administrative & Clerical,1
+M,HISPANIC,2,Professionals,NYCTRANSIT,Engineering,28
+M,HISPANIC,2,Professionals,NYCTRANSIT,Other Professional & Technical,48
+M,HISPANIC,4,Protective Service,MABSTOA,Hourly Occupational,16
+M,HISPANIC,4,Protective Service,NYCTRANSIT,Hourly Occupational,34
+M,HISPANIC,8,Service Maintenance,MABSTOA,Hourly Occupational,1120
+M,HISPANIC,8,Service Maintenance,NYCTRANSIT,Hourly Occupational,2452
+M,HISPANIC,8,Service Maintenance,SIRTOA,Hourly Occupational,12
+M,HISPANIC,7,Skilled Craft,MABSTOA,Hourly Occupational,115
+M,HISPANIC,7,Skilled Craft,MABSTOA,Other Professional & Technical,1
+M,HISPANIC,7,Skilled Craft,NYCTRANSIT,Hourly Occupational,1577
+M,HISPANIC,7,Skilled Craft,SIRTOA,Hourly Occupational,14
+M,HISPANIC,3,Technicians,MABSTOA,Other Professional & Technical,7
+M,HISPANIC,3,Technicians,NYCTRANSIT,Other Professional & Technical,8
+M,NHOPI,6,Office/Clerical,NYCTRANSIT,Hourly Occupational,2
+M,NHOPI,1,Officials/Administrators,NYCTRANSIT,Managerial,1
+M,NHOPI,1,Officials/Administrators,NYCTRANSIT,Operating Supervisors,1
+M,NHOPI,8,Service Maintenance,NYCTRANSIT,Hourly Occupational,7
+M,NHOPI,7,Skilled Craft,NYCTRANSIT,Hourly Occupational,6
+M,NOTSPEC,6,Office/Clerical,MABSTOA,Hourly Occupational,1
+M,NOTSPEC,6,Office/Clerical,NYCTRANSIT,Hourly Occupational,8
+M,NOTSPEC,1,Officials/Administrators,NYCTRANSIT,Hourly Occupational,2
+M,NOTSPEC,1,Officials/Administrators,NYCTRANSIT,Operating Supervisors,7
+M,NOTSPEC,2,Professionals,MABSTOA,Other Professional & Technical,1
+M,NOTSPEC,2,Professionals,NYCTRANSIT,Engineering,1
+M,NOTSPEC,2,Professionals,NYCTRANSIT,Other Professional & Technical,1
+M,NOTSPEC,8,Service Maintenance,MABSTOA,Hourly Occupational,17
+M,NOTSPEC,8,Service Maintenance,NYCTRANSIT,Hourly Occupational,65
+M,NOTSPEC,7,Skilled Craft,MABSTOA,Hourly Occupational,6
+M,NOTSPEC,7,Skilled Craft,NYCTRANSIT,Hourly Occupational,47
+M,NOTSPEC,3,Technicians,MABSTOA,Other Professional & Technical,1
+M,OTHER,6,Office/Clerical,MABSTOA,Administrative & Clerical,3
+M,OTHER,6,Office/Clerical,MABSTOA,Hourly Occupational,9
+M,OTHER,6,Office/Clerical,NYCTRANSIT,Administrative & Clerical,2
+M,OTHER,6,Office/Clerical,NYCTRANSIT,Hourly Occupational,29
+M,OTHER,1,Officials/Administrators,MABSTOA,Managerial,10
+M,OTHER,1,Officials/Administrators,MABSTOA,Operating Supervisors,22
+M,OTHER,1,Officials/Administrators,MABSTOA,Other Professional & Technical,1
+M,OTHER,1,Officials/Administrators,NYCTRANSIT,Managerial,44
+M,OTHER,1,Officials/Administrators,NYCTRANSIT,Operating Supervisors,134
+M,OTHER,1,Officials/Administrators,SIRTOA,Hourly Occupational,1
+M,OTHER,1,Officials/Administrators,SIRTOA,Operating Supervisors,1
+M,OTHER,2,Professionals,MABSTOA,Engineering,5
+M,OTHER,2,Professionals,MABSTOA,Other Professional & Technical,16
+M,OTHER,2,Professionals,NYCTRANSIT,Engineering,11
+M,OTHER,2,Professionals,NYCTRANSIT,Other Professional & Technical,12
+M,OTHER,4,Protective Service,NYCTRANSIT,Hourly Occupational,2
+M,OTHER,8,Service Maintenance,MABSTOA,Hourly Occupational,43
+M,OTHER,8,Service Maintenance,NYCTRANSIT,Hourly Occupational,160
+M,OTHER,8,Service Maintenance,SIRTOA,Hourly Occupational,2
+M,OTHER,7,Skilled Craft,MABSTOA,Hourly Occupational,19
+M,OTHER,7,Skilled Craft,NYCTRANSIT,Hourly Occupational,211
+M,OTHER,7,Skilled Craft,SIRTOA,Hourly Occupational,4
+M,OTHER,3,Technicians,MABSTOA,Other Professional & Technical,4
+M,OTHER,3,Technicians,NYCTRANSIT,Other Professional & Technical,4
+M,WHITE,6,Office/Clerical,MABSTOA,Administrative & Clerical,21
+M,WHITE,6,Office/Clerical,MABSTOA,Hourly Occupational,40
+M,WHITE,6,Office/Clerical,MABSTOA,Other Professional & Technical,1
+M,WHITE,6,Office/Clerical,NYCTRANSIT,Administrative & Clerical,15
+M,WHITE,6,Office/Clerical,NYCTRANSIT,Hourly Occupational,295
+M,WHITE,6,Office/Clerical,SIRTOA,Administrative & Clerical,1
+M,WHITE,6,Office/Clerical,SIRTOA,Hourly Occupational,2
+M,WHITE,6,Office/Clerical,SIRTOA,Operating Supervisors,1
+M,WHITE,1,Officials/Administrators,MABSTOA,Managerial,252
+M,WHITE,1,Officials/Administrators,MABSTOA,Operating Supervisors,222
+M,WHITE,1,Officials/Administrators,MABSTOA,Other Professional & Technical,5
+M,WHITE,1,Officials/Administrators,NYCTRANSIT,Hourly Occupational,54
+M,WHITE,1,Officials/Administrators,NYCTRANSIT,Managerial,677
+M,WHITE,1,Officials/Administrators,NYCTRANSIT,Operating Supervisors,1142
+M,WHITE,1,Officials/Administrators,NYCTRANSIT,Other Professional & Technical,1
+M,WHITE,1,Officials/Administrators,SIRTOA,Hourly Occupational,12
+M,WHITE,1,Officials/Administrators,SIRTOA,Managerial,14
+M,WHITE,1,Officials/Administrators,SIRTOA,Operating Supervisors,2
+M,WHITE,5,Paraprofessional,MABSTOA,Other Professional & Technical,1
+M,WHITE,5,Paraprofessional,NYCTRANSIT,Other Professional & Technical,5
+M,WHITE,2,Professionals,MABSTOA,Engineering,25
+M,WHITE,2,Professionals,MABSTOA,Other Professional & Technical,225
+M,WHITE,2,Professionals,NYCTRANSIT,Engineering,131
+M,WHITE,2,Professionals,NYCTRANSIT,Other Professional & Technical,231
+M,WHITE,2,Professionals,SIRTOA,Other Professional & Technical,1
+M,WHITE,4,Protective Service,MABSTOA,Hourly Occupational,13
+M,WHITE,4,Protective Service,NYCTRANSIT,Hourly Occupational,32
+M,WHITE,8,Service Maintenance,MABSTOA,Hourly Occupational,356
+M,WHITE,8,Service Maintenance,NYCTRANSIT,Hourly Occupational,2378
+M,WHITE,8,Service Maintenance,SIRTOA,Hourly Occupational,37
+M,WHITE,7,Skilled Craft,MABSTOA,Hourly Occupational,296
+M,WHITE,7,Skilled Craft,MABSTOA,Other Professional & Technical,2
+M,WHITE,7,Skilled Craft,NYCTRANSIT,Hourly Occupational,4468
+M,WHITE,7,Skilled Craft,SIRTOA,Hourly Occupational,64
+M,WHITE,3,Technicians,MABSTOA,Engineering,1
+M,WHITE,3,Technicians,MABSTOA,Other Professional & Technical,29
+M,WHITE,3,Technicians,NYCTRANSIT,Engineering,1
+M,WHITE,3,Technicians,NYCTRANSIT,Other Professional & Technical,26
