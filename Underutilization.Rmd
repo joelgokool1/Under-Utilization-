@@ -1,0 +1,476 @@
+---
+title: "Final Project - Data 606"
+output: html_document
+---
+###Introduction
+
+New York City Transit (NYCT) is a public authority and one of seven agencies within the Metropolitan Transportation Authority (MTA) that operate public transportation in New York City (NYC). NYCT employs approximately 47,000 employees in various occupational groups.  Under Title VII of the Civil Rights Act of 1964, the Equal Employment Opportunity Commission requires public/private employers to report the composition of its workforce by sex and race/ethnic categories (eeoc.gov). According to the Equal Employment Opportunity Commission (EEOC) website, "Title VII of the Civil Rights Act as amended by the Equal Employment Opportunity Act of 1972 prohibits employment discrimination based on race, color, religion, sex and national origin." In an effort to comply with EEOC guidelines, private and public employers are required to analyze internal and external workforce data to ensure that protected class employees are represented in their workforce.  (Note that: for the purposes of this analysis,  protected class employees are considered Females and Minorities (i.e., Black, Hispanic, Asian, Other Pacific Islander and Hawaiian Native)).  This utilization analysis compares the availability of females and minorities for each EEO- 4 Job Category (defined below) within the five boroughs of New York City (NYC) to New York City Transit's (NYCT) current workforce representation of females and minorities to determine whether underutilization exists. Underutilization exist if the current workforce has fewer females or minorities than would be reasonably expected by their availability in the relevant job market (NYC). When a Job Category is deemed to be underutilized, appropriate remedies should be identified to increase the number of females and/or minorities workers. 
+
+The Office of Federal Contract Compliance Programs (OFCCP) currently recognizes four tests to determine whether underutilization exists:  the any difference rule, the "one-person rule", the "two standard deviation rule", and the "80% rule". This analyis will utilize the two standard deviation rukl to determine underutilization. 
+
+Under the two standard-deviation rule, underutilization is inferred if the difference in a particular job group between the percentage of the protected class within NYCT and the percentage of similarly qualified workers in the NYC labor market is greater than two standard errors (standard deviations) of the difference's estimate.
+
+#### Load packages and dataset
+
+```{r}
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+
+setwd("C:/Users/cassandra/Desktop/Load R")
+eeo.tab <- read.csv("EEO_tab.csv")
+occ.only <- read.csv("occ.only.csv")
+eeo.nyct <- read.csv("eeo.nyct.csv")
+```
+### The Dataset
+
+The datasets used in this analysis are the EEO Tabulation 2006-2010 data provided by the United States Census Bureau and the New York City Transit (NYCT) workforce information extracted from the PeopleSoft 9.2 database.  The EEO Tabulation 2006-2010 data is derived from American Community Survey (ACS) data, which consists of estimates on the population of New York City (NYC) by Standard Occupation Classification (SOC) cross-classified by race and sex.  The NYCT data consists of information on all employees working at NYCT by Sex, Ethnicity, EEO-4 Job Category and Occupational group. The EEO-4 job category column in the NYCT data set represents one or more positions having similar requirements, content, wage rates and opportunities for advancement.  
+
+Census Dataset
+
+The EEO Tabulation data can be found in the American Fact Finder page at: http://factfinder.census.gov/faces/nav/jsf/pages/searchresults.xhtml. To obtain the relevant labor market statistics for NYC, first select the EEO Occupation Codes option (at the bottom of the page) and then select the SOC codes applicable to NYCT. Next, click on the "Geographies" option, select the geographic type "County - 050", select the state NYS, choose the five counties of NYC (i.e., Kings, Queens, New York, Richmond, and Bronx).  On the search result page, select the dataset named "EEO 2r. Detailed Census Occupation by Sex, and Race/Ethnicity for Residence Geography, Total Population".  The subsequent generated table includes the number of eligible individuals in the relevant labor market by SOC. Finally, download the dataset to a CSV file. 
+
+The Census data is bifurcated into Sex and Race groupings to highlight minority and female workforce estimates in the Utilization Report. The percentage of workers in each EE0-4 Job category for NYCT and NYC was calculated by Race and Sex. Underutilization for Race was determined by comparing the difference between the percentage of the protected class employees in a particular job group within NYCT from the percentage of similarly qualified workers in the NYC labor market is greater than two standard errors (standard deviations) of the difference's estimate (two standard-deviation rule). 
+
+
+#### Data wrangling 
+
+```{r}
+##Join OCC codes to the Census data
+join.inner <- inner_join(eeo.tab,occ.only)
+
+## Select geographic data on the number of residence in NYC by Sex and Race  
+## Rename column headers
+## Sort by EEO Job Category 
+## Find the vertical summation for each Race and Sex category
+df.census <- join.inner[2:nrow(join.inner),c("OCC","OCCUPATION2010.display.label","EEO.4.Descr","EST_HC2_VC5","EST_HC3_VC5","EST_HC4_VC5",
+                                             "EST_HC5_VC5","EST_HC6_VC5","EST_HC7_VC5","EST_HC8_VC5","EST_HC9_VC5",
+                                             "EST_HC10_VC5","EST_HC11_VC5","EST_HC12_VC5","EST_HC13_VC5","EST_HC14_VC5","EST_HC15_VC5",
+                                             "EST_HC16_VC5", "EST_HC2_VC8", "EST_HC3_VC8", "EST_HC4_VC8", 
+                                             "EST_HC5_VC8", "EST_HC6_VC8", "EST_HC7_VC8", "EST_HC8_VC8", "EST_HC9_VC8", 
+                                             "EST_HC10_VC8", "EST_HC11_VC8", "EST_HC12_VC8", "EST_HC13_VC8", "EST_HC14_VC8", "EST_HC15_VC8", 
+                                             "EST_HC16_VC8", "MOE_HC1_VC5", "MOE_HC2_VC5", "MOE_HC3_VC5", "MOE_HC4_VC5", "MOE_HC5_VC5", 
+                                             "MOE_HC6_VC5", "MOE_HC7_VC5", "MOE_HC8_VC5", "MOE_HC9_VC5", "MOE_HC10_VC5", "MOE_HC11_VC5", 
+                                             "MOE_HC12_VC5", "MOE_HC13_VC5", "MOE_HC14_VC5", "MOE_HC15_VC5", "MOE_HC16_VC5", "MOE_HC1_VC8",
+                                             "MOE_HC2_VC8","MOE_HC3_VC8","MOE_HC4_VC8","MOE_HC5_VC8","MOE_HC6_VC8","MOE_HC7_VC8","MOE_HC8_VC8",
+                                             "MOE_HC9_VC8","MOE_HC10_VC8","MOE_HC11_VC8","MOE_HC12_VC8","MOE_HC13_VC8","MOE_HC14_VC8","MOE_HC15_VC8",
+                                             "MOE_HC16_VC8")] %>%
+  rename(OCC = OCC, occ.group = OCCUPATION2010.display.label, EEO.Job.Group = EEO.4.Descr,  
+         White.alone.Hispanic.or.Latino_Male = EST_HC2_VC5, All.other.Hispanic.or.Latino_Male = EST_HC3_VC5,
+         White.alone_Male = EST_HC4_VC5, Black.or.African.American.alone_Male = EST_HC5_VC5, American.Indian.and.Alaska.Native.alone_Male= EST_HC6_VC5,
+         Asian.alone_Male = EST_HC7_VC5, Native.Hawaiian.and.Other.Pacific.Islander.alone_Male =EST_HC8_VC5,
+         White.and.Black_Male = EST_HC9_VC5,White.and.AIAN_Male = EST_HC10_VC5, White.and.Asian_Male = EST_HC11_VC5,
+         Black.and.AIAN_Male =  EST_HC12_VC5, NHPI.and.White.Hawaii.only_Male = EST_HC13_VC5,
+         NHPI.and.Asian.Hawaii.only_Male = EST_HC14_VC5, NHPI.and.Asian.and.White.Hawaii.only_Male = EST_HC15_VC5,
+         Balance.of.not.Hispanic.or.Latino_Male = EST_HC16_VC5, 
+         White.alone.Hispanic.or.Latino_Female = EST_HC2_VC8, All.other.Hispanic.or.Latino_Female = EST_HC3_VC8,
+         White.alone_Female = EST_HC4_VC8, Black.or.African.American.alone_Female = EST_HC5_VC8, American.Indian.and.Alaska.Native.alone_Female = EST_HC6_VC8,
+         Asian.alone_Female= EST_HC7_VC8, Native.Hawaiian.and.Other.Pacific.Islander.alone_Female = EST_HC8_VC8,
+         White.and.Black_Female = EST_HC9_VC8, White.and.AIAN_Female = EST_HC10_VC8, White.and.Asian_Female = EST_HC11_VC8,
+         Black.and.AIAN_Female =  EST_HC12_VC8, NHPI.and.White.Hawaii.only_Female = EST_HC13_VC8,
+         NHPI.and.Asian.Hawaii.only_Female = EST_HC14_VC8, NHPI.and.Asian.and.White.Hawaii.only_Female = EST_HC15_VC8,
+         Balance.of.not.Hispanic.or.Latino_Female = EST_HC16_VC8,MOE_Total.race.and.ethnicity_Male = MOE_HC1_VC5, 
+         MOE_White.alone.Hispanic.or.Latino_Male = MOE_HC2_VC5, MOE_All.other.Hispanic.or.Latino.Male = MOE_HC3_VC5,
+         MOE_White.alonE.Male = MOE_HC4_VC5, MOE_Black.or.African.American.alone_Male = MOE_HC5_VC5, MOE_American.Indian.and.Alaska.Native.alone_Male = MOE_HC6_VC5,
+         MOE_Asian.alone_Male = MOE_HC7_VC5, MOE_Native.Hawaiian.and.Other.Pacific.Islander.alone_Male = MOE_HC8_VC5,
+         MOE_White.and.Black_Male = MOE_HC9_VC5, MOE_White.and.AIAN_Male= MOE_HC10_VC5, MOE_White.and.Asian_Male = MOE_HC11_VC5,
+         MOE_Black_and_AIAN_Male =  MOE_HC12_VC5, MOE_NHPI.and.White.Hawaii.only_Male = MOE_HC13_VC5,
+         MOE_NHPI.and.Asian.Hawaii.only_Male = MOE_HC14_VC5, MOE_NHPI.and.Asian.and.White.Hawaii.only_Male = MOE_HC15_VC5,
+         MOE_Balance.of.not.Hispanic.or.Latino_Male = MOE_HC16_VC5,MOE_Total.race.and.ethnicity_Female = MOE_HC1_VC8, 
+         MOE_White.alone.Hispanic.or.Latino_Female = MOE_HC2_VC8, MOE_All.other.Hispanic.or.Latino.Female = MOE_HC3_VC8,
+         MOE_White.alone.Female = MOE_HC4_VC8, MOE_Black.or.African.American.alone_Female = MOE_HC5_VC8, MOE_American.Indian.and.Alaska.Native.alone_Female= MOE_HC6_VC8,
+         MOE_Asian.alone_Female = MOE_HC7_VC8, MOE_Native.Hawaiian.and.Other.Pacific.Islander.alone_Female = MOE_HC8_VC8,
+         MOE_White.and.Black_Female = MOE_HC9_VC8, MOE_White.and.AIAN_Female = MOE_HC10_VC8, MOE_White.and.Asian_Female = MOE_HC11_VC8,
+         MOE_Black_and_AIAN_Female =  MOE_HC12_VC8, MOE_NHPI.and.White.Hawaii.only_Female = MOE_HC13_VC8,
+         MOE_NHPI.and.Asian.Hawaii.only_Female = MOE_HC14_VC8, MOE_NHPI.and.Asian.and.White.Hawaii.only_Female = MOE_HC15_VC8,
+         MOE_Balance.of.not.Hispanic.or.Latino_Female = MOE_HC16_VC8) %>%
+  group_by(EEO.Job.Group) %>%
+  summarize(White.alone.Hispanic.or.Latino_Male = sum(White.alone.Hispanic.or.Latino_Male), 
+            All.other.Hispanic.or.Latino_Male = sum(All.other.Hispanic.or.Latino_Male), White.alone_Male = sum(White.alone_Male),
+            Black.or.African.American.alone_Male = sum(Black.or.African.American.alone_Male), American.Indian.and.Alaska.Native.alone_Male = sum(American.Indian.and.Alaska.Native.alone_Male),
+            Asian.alone_Male = sum(Asian.alone_Male), Native.Hawaiian.and.Other.Pacific.Islander.alone_Male = sum(Native.Hawaiian.and.Other.Pacific.Islander.alone_Male),
+            White.and.Black_Male = sum(White.and.Black_Male), White.and.AIAN_Male = sum(White.and.AIAN_Male), White.and.Asian_Male= sum(White.and.Asian_Male),
+            Black.and.AIAN_Male = sum(Black.and.AIAN_Male),Balance.of.not.Hispanic.or.Latino_Male = sum(Balance.of.not.Hispanic.or.Latino_Male),
+            White.alone.Hispanic.or.Latino_Female = sum(White.alone.Hispanic.or.Latino_Female), White.alone_Female = sum(White.alone_Female), Black.or.African.American.alone_Female = sum(Black.or.African.American.alone_Female),
+            American.Indian.and.Alaska.Native.alone_Female = sum(American.Indian.and.Alaska.Native.alone_Female), Asian.alone_Female = sum(Asian.alone_Female),
+            Native.Hawaiian.and.Other.Pacific.Islander.alone_Female = sum(Native.Hawaiian.and.Other.Pacific.Islander.alone_Female),White.and.Black_Female = sum(White.and.Black_Female),
+            White.and.AIAN_Female = sum(White.and.AIAN_Female),White.and.Asian_Female = sum(White.and.Asian_Female), Black.and.AIAN_Female = sum(Black.and.AIAN_Female),
+            Balance.of.not.Hispanic.or.Latino_Female = sum(Balance.of.not.Hispanic.or.Latino_Female)) 
+
+#Gather Race and Sex column headers and convert them into rows 
+occ.gather <- df.census %>% gather(Race_sex, total, White.alone.Hispanic.or.Latino_Male: Balance.of.not.Hispanic.or.Latino_Female)
+
+# Seperate Race and Sex into different variables  
+soc.separated <- occ.gather %>%
+  separate(col = Race_sex, sep = "_", into = c("Race", "Sex"))
+```
+
+```{r}
+#Calculate the percentage of Race and females for OCC categories
+sort.occ<- soc.separated %>% 
+  group_by(EEO.Job.Group, Race) %>%
+  summarize(population = sum(as.numeric(total))) %>%
+  mutate(EEO.Job.Group.frac = population/sum(population))
+
+
+#Calculate the percentage for females in Job categories
+sort.female <- soc.separated %>% 
+  group_by(EEO.Job.Group, Sex) %>%
+  summarize(population = sum(as.numeric(total))) %>%
+  mutate(EEO.Job.Group.frac = population/sum(population)) 
+
+#Map Census Race to Transit Race categories
+transit.race.map <- c("White.alone" = "White", "White.alone" = "White", "All.other.Hispanic.or.Latino"  = 'Hispanic',  
+                      "Balance.of.not.Hispanic.or.Latino" = "Hispanic","All.other.Hispanic.or.Latino" = "Hispanic", 
+                      "White.alone.Hispanic.or.Latino" = "Other", "White.and.Black" = "Other","White.alone.Hispanic.or.Latino" = "Other",
+                      "White.and.AIAN"  = "Other", "White.and.Asian" = "Other", "Black.and.AIAN" = "Other", "White.and.Black" = "Other",
+                      "White.and.AIAN" = "Other", "White.and.Asian" = "Other", "Black.and.AIAN" = "Other",
+                      "Black.or.African.American.alone" = "Black", "Black.or.African.American.alone" = "Black",
+                      "American.Indian.and.Alaska.Native.alone" = "AI/AN", "American.Indian.and.Alaska.Native.alone" = "AI/AN",
+                      "Asian.alone" = "Asian", "Asian.alone" = "Asian", "Native.Hawaiian.and.Other.Pacific.Islander.alone" = "NHOPI", 
+                      "Native.Hawaiian.and.Other.Pacific.Islander.alone" = "Other")
+
+# Convert Cenus Race to NYCT
+Job.Category <- sort.occ %>% mutate(new.race = transit.race.map[Race]) %>%
+  select( EEO.Job.Group, population, EEO.Job.Group.frac, new.race) %>%
+  group_by(EEO.Job.Group, new.race) %>%
+  summarize(population.race = sum(as.numeric(EEO.Job.Group.frac*100)))
+
+# Convert Cenus Race to NYCT for Females
+Job.Category.female <- sort.female %>%
+  select( EEO.Job.Group, population, EEO.Job.Group.frac, Sex) %>%
+  group_by(EEO.Job.Group, Sex) %>%
+  summarize(population.female = sum(as.numeric(EEO.Job.Group.frac))) 
+
+```
+
+
+NYCT Dataset
+
+The NYCT data can be found in the Human Capital Database. The data queried was the total number of employees in each of the eight EEO-4 Job categories by Race, Sex and internal Occupational Group classification as of November 1, 2018.  
+
+```{r}
+
+##Check for Missing Values 
+new.data <- na.omit(eeo.tab)
+
+#Create a data frame with NYCT race and census race
+race.join <- data.frame(Race.nyct = c("WHITE", "HISPANIC", "OTHER", "BLACK", "AMERIND", "ASIAN", "NHOPI", "NOTSPEC"),
+                        new.race.nyct = c("White",'Hispanic',"Other","Black","AI/AN", "Asian", "NHOPI", "Other"))
+
+#Modify Sex category names
+transit.Sex.map.nyct <- c("F" = "Female", "M"  = 'Male') 
+
+#Find Officials/Administrators population NYCT
+workforce <- eeo.nyct %>%
+  rename(Race.nyct = Ethnic.Grp, Total.nyct = Count..., EEO.Job.Group.nyct = EEO.4.Description, occup.group = OccGrpDesc) %>%
+  filter(occup.group == "Hourly Occupational") %>%
+  group_by(Sex, Race.nyct,occup.group,EEO.Job.Group.nyct) %>%
+  summarize(pop.nyct = sum(as.numeric(Total.nyct))) %>%
+  mutate(occup.frac = round(pop.nyct*.67))
+
+# Change Sex values to full description  
+workforce.new <-  workforce %>% 
+  mutate(new.sex.nyct = transit.Sex.map.nyct[as.character(Sex)])
+
+#Map Census Sex to NYCT Race
+Workforce.race <- inner_join(workforce.new, race.join, c("Race.nyct" = "Race.nyct")) %>%
+  group_by(new.race.nyct) %>%
+  summarize(occup.frac = sum(occup.frac)) %>%
+  mutate(off.man.frac.nyct = round(occup.frac)) 
+
+#Map Census Sex to NYCT Sex
+Workforce.sex <- workforce.new %>% select(new.sex.nyct, occup.frac) %>%
+  group_by(new.sex.nyct)%>%
+  summarize(occup.frac = sum(occup.frac))%>%
+  mutate(off.man.frac.nyct = round(occup.frac))
+
+```
+Officials/Administrators Census Workforce 
+
+The available workforce for Officials/Administrators is not only the geographic location of NYC but instead a combination of NYCT data and Census data.  
+
+The EEO-4 job group Officials/Administrators used by NYCT consists of various NYCT Occupational groups.  The total NYCT employees in the EEO-4 job category Officials/Administrators are 7,802. The number of "Operating Supervisors" that are in the EEO-4 Job Group Officials/Administrators is 5,219.  As such, 67% of the Officials/Administrators population is Operating Supervisors. 
+ 
+The available workforce for Operating Supervisors (sub-group of the Officials/Administrators population) is not the geographic location of New York City but instead the NYCT occupational group called "Hourly Occupational".  Hourly employees take a competitive exam to promote to an Operating Supervisor position. Further, the number of NYCT employees in the occupational group - Hourly Occupational is 38,346.  A weighted average of the two groups 67% of the Hourly Occupational group and 33% of the New York City workforce (Census data) was used in this analysis to  determine the total available workforce for the EEO-4 Job Group Officials/Administrators.  
+
+```{r}
+#Find Officials/Administrators population Census for Race
+census.workforce.race <- soc.separated %>% mutate(new.race = transit.race.map[Race]) %>%
+  select(EEO.Job.Group,new.race, Sex,total) %>%
+  filter(EEO.Job.Group == "Officials/Administrators") %>%
+  group_by(new.race) %>%
+  summarize(pop.census = sum(as.numeric(total))) %>% 
+  mutate(census.frac = round(pop.census*.33))
+
+#Find Officials/Administrators population Census for Sex
+census.workforce.sex <- soc.separated %>% mutate(new.race = transit.race.map[Race]) %>%
+  select(EEO.Job.Group,new.race, Sex,total) %>%
+  filter(EEO.Job.Group == "Officials/Administrators") %>%
+  group_by(Sex) %>%
+  summarize(pop.census = sum(as.numeric(total))) %>% 
+  mutate(census.frac = round(pop.census*.33))
+
+#Join Officials/Administrators data for Race
+Officials.Administrator <- inner_join(census.workforce.race, Workforce.race, c("new.race" = "new.race.nyct")) %>% 
+  select(new.race, pop.census,census.frac, off.man.frac.nyct) %>%
+  mutate(Officials.Admin.=census.frac+off.man.frac.nyct) %>%
+  mutate(Officials.Administrators = Officials.Admin./sum(Officials.Admin.))
+
+#Join Officials/Administrators data for Sex
+Officials.Administrator.sex <- inner_join(census.workforce.sex, Workforce.sex, c("Sex" = "new.sex.nyct")) %>% 
+  select(Sex, census.frac, off.man.frac.nyct) %>%
+  mutate(Officials.Admin.=census.frac+off.man.frac.nyct) %>%
+  mutate(Officials.Administrators = Officials.Admin./sum(Officials.Admin.)) 
+```
+
+
+## Find the vertical summation for each Race and Sex category
+
+```{r}
+df <- eeo.nyct %>%
+  rename(Race.nyct = Ethnic.Grp, Total.nyct = Count..., EEO.Job.Group.nyct = EEO.4.Description) %>%
+  group_by(EEO.Job.Group.nyct,Race.nyct) %>%
+  summarize(population.nyct = sum(as.numeric(Total.nyct))) %>%
+  mutate(EEO.Job.Group.frac.nyct = population.nyct/sum(population.nyct))
+head(df, 10)
+```
+
+## Find the vertical summation for Sex 
+
+```{r}
+df.female <- eeo.nyct %>%
+  rename(Sex.nyct = Sex, Total.female.nyct = Count..., EEO.Job.Group.female.nyct = EEO.4.Description) %>%
+  group_by(EEO.Job.Group.female.nyct, Sex.nyct) %>%
+  summarize(population.female.nyct = sum(as.numeric(Total.female.nyct))) %>%
+  mutate(EEO.Job.Group.female.frac.nyct = population.female.nyct/sum(population.female.nyct))
+head(df.female, 10)
+```
+
+
+```{r}
+# Convert Cenus Race to NYCT
+Job.Category.nyct <- inner_join(df,race.join) %>%
+  select( EEO.Job.Group.nyct, population.nyct, EEO.Job.Group.frac.nyct, new.race.nyct) %>%
+  group_by(EEO.Job.Group.nyct, new.race.nyct) %>%
+  summarize(population.race.nyct = sum(as.numeric(EEO.Job.Group.frac.nyct*100)))
+
+# Convert Cenus Race to NYCT
+Job.Category.female.nyct <- df.female %>% mutate(new.sex.nyct = transit.Sex.map.nyct[Sex.nyct]) %>%
+  select( EEO.Job.Group.female.nyct, population.female.nyct, EEO.Job.Group.female.frac.nyct, new.sex.nyct) %>%
+  group_by(EEO.Job.Group.female.nyct, new.sex.nyct) %>%
+  summarize(population.female.nyct = sum(as.numeric(EEO.Job.Group.female.frac.nyct)))
+
+# Join Cenus workforce percentage and NYCT workforce percentageby Ehtnic group
+join <- inner_join(Job.Category, Job.Category.nyct, c("EEO.Job.Group" = "EEO.Job.Group.nyct", "new.race" = "new.race.nyct")) 
+head(join,10)
+
+#Replace Census workforce with 67% of NYCT's Hourly Population workforce and 33% of Census workforce for Race 
+join$population.race[8:14] <- c(0.2354553, 14.0784956,26.9434907,10.4994173,
+                                0.0425237, 8.8181560, 39.3824613)
+```
+
+
+```{r}
+# Join Census Sex data and NYCT Sex data
+join.female <- inner_join(Job.Category.female, Job.Category.female.nyct, c("EEO.Job.Group" = "EEO.Job.Group.female.nyct", "Sex" = "new.sex.nyct"))
+head(join.female)
+
+#Replace Census workforce with 67% of NYCT's Hourly Population workforce and 33% of Census workforce for Sex
+join.female$population.female[3:4] <- c(0.3324356, 0.6675644)
+
+# Create workforce comparison by Sex
+workforce.comparison.sex <- join.female %>% 
+  mutate(underrepresentation = ifelse(population.female *.8 > population.female.nyct, "Yes", "No"), 
+         ratio = (population.female.nyct/population.female), log.ratio = log(ratio)) %>% 
+  filter(!is.infinite(ratio)) %>%
+  filter(Sex != "Male")
+```
+
+Analysis for Two Standard Deviation Analysis 
+
+Under the two standard deviation rule, underutilization may be inferred if the difference between the percentage of the protected class employees in a particular job group within NYCT and the percentage of similarly qualified workers in the NYC labor market is greater than two standard errors (standard deviations) of the difference's estimate. The estimate of the standard error assumes what is called the Null Hypothesis: that New York City Transit is hiring on a random basis from an available qualified population, each person having an equal chance of being selected. Based on the null hypothesis, for a specific race, sex, or ethnic group within a given occupation, the proportion of workers at NYCT (p) is equal to the proportion of workers (Pm) in the NYC for that occupation, and that any deviation between p and Pm may be attributed solely to chance. The null hypothesis formula as follows:
+
+                                                                              H0: p = pm
+
+                                                          where:
+                                                                                H0 = the null hypothesis
+                                                                                p = NYCT workers
+                                                                                Pm=  workers in NYC
+
+Based on this assumption, for a specific race and sex in a given EEO-4 job group, the proportion of NYCT workers (p) will differ from the proportion of workers (Pm) in the NYC labor market by more than two standard errors less than 5% of the time. In other words, you can be greater than 95% confident that such a difference is not due to chance and reject the Null Hypothesis that hiring is on a random basis from the available pool.  When evaluating underutilization, the data for "p" and "Pm" is analyzed to determine whether to reject the null hypothesis. The null hypothesis may be rejected to the extent that "p" may differ from "Pm".  The inferential statistical procedure used to test the hypothesis is probability, which is the likelihood that the observed samples are statistically significant or they are due to chance. The standard error used when analyzing the differences between "p" and "Pm" depends on the number of workers employed at NYCT in a given EEO-4 job group and the uncertainty of the Census data (relevant labor market availability). The Census data contains a certain amount of sampling variance as it is an estimate based on samples from the population.  
+
+```{r}
+#Adding confidence Intervals for race
+ci.nyct <- inner_join(df,race.join) %>%
+  select( EEO.Job.Group.nyct,new.race.nyct, population.nyct) %>%
+  group_by(EEO.Job.Group.nyct,new.race.nyct) %>%
+  summarize(population.nyct = sum(as.numeric(population.nyct))) %>%
+  mutate(total.race.nyct = sum(population.nyct)) %>%
+  mutate(p=population.nyct/total.race.nyct)%>%  
+  mutate(upper.limit=p+1.96*sqrt(p*(1-p)/total.race.nyct)) %>%
+  mutate(lower.limit=p-1.96*sqrt(p*(1-p)/total.race.nyct)) %>%
+  filter(new.race.nyct != "White") 
+
+#Add Available Census Data for race
+#Determine underutilization using two standard-deviation rule for race
+ci.census <- inner_join(workforce.comparison.race,ci.nyct, c("EEO.Job.Group" = "EEO.Job.Group.nyct", "new.race" = "new.race.nyct")) %>%
+  select(EEO.Job.Group,new.race, population.race,p,upper.limit, lower.limit) %>%
+  rename(available.census= population.race, race = new.race) %>%
+  mutate(available.census = available.census/100,
+         centered.p = p-available.census,
+         upper= upper.limit-available.census,
+         lower= lower.limit-available.census,
+         under= ifelse(upper<0, "Yes","No"))
+
+#Adding confidence Intervals for sex
+ci.sex.nyct <- df.female %>% mutate(new.sex.nyct = transit.Sex.map.nyct[Sex.nyct]) %>%
+  select(EEO.Job.Group.female.nyct, new.sex.nyct, population.female.nyct) %>%
+  rename(EEO.Job.Group = EEO.Job.Group.female.nyct, sex=new.sex.nyct, sex.total=population.female.nyct) %>%
+  group_by(EEO.Job.Group)%>%
+  mutate(both.sex.total = sum(as.numeric(sex.total)),
+         p= sex.total/both.sex.total,
+         upper.limit=p+1.96*sqrt(p*(1-p)/both.sex.total),
+         lower.limit=p-1.96*sqrt(p*(1-p)/both.sex.total)) %>%
+  filter(sex != "Male")  
+
+#Add Available Census Data for sex
+#Determine underutilization using two standard-deviation rule for sex
+ci.census.sex <- inner_join(workforce.comparison.sex,ci.sex.nyct, c("EEO.Job.Group" = "EEO.Job.Group", "Sex" = "sex")) %>%
+  select(EEO.Job.Group,Sex, population.female,p,upper.limit, lower.limit) %>%
+  rename(available.census= population.female) %>%
+  mutate(available.census = available.census,
+         centered.p = p-available.census,
+         upper= upper.limit-available.census,
+         lower= lower.limit-available.census,
+         under= ifelse(upper<0, "Yes","No"))
+
+#Obtain Census population to calculate Standard Error        
+census.population <- sort.occ %>% mutate(new.race = transit.race.map[Race]) %>%
+  select(EEO.Job.Group, new.race, population) %>%
+  group_by(EEO.Job.Group,new.race) %>%
+  summarize(race.total.census = sum(population)) %>%
+  mutate(group.total.census = sum(race.total.census))
+
+#calculate Standard error for race
+#Determine underutilization using standard error for race
+se <- inner_join(ci.nyct,census.population, c("EEO.Job.Group.nyct" = "EEO.Job.Group", "new.race.nyct" = "new.race")) %>%
+  rename(eeo.job.group =EEO.Job.Group.nyct, race =new.race.nyct, race.total.nyct = population.nyct, group.total.nyct = total.race.nyct) %>%
+  select(eeo.job.group,race,race.total.nyct, group.total.nyct,p, race.total.census, group.total.census) %>%
+  mutate(pm = race.total.census/group.total.census) %>%
+  mutate(spm= sqrt(((p*(1-p))/group.total.nyct) + ((pm*(1-pm)/group.total.census))))%>%
+  mutate(z= (p-pm)/spm) %>%
+  mutate(underutilization = ifelse(z< -1.96,"Yes","No"))
+
+#Obtain NYCT data to calculate standard error
+se.nyct.sex <- df.female %>% mutate(new.sex.nyct = transit.Sex.map.nyct[Sex.nyct]) %>%
+  select(EEO.Job.Group.female.nyct, new.sex.nyct, population.female.nyct) %>%
+  rename(EEO.Job.Group = EEO.Job.Group.female.nyct, sex=new.sex.nyct, sex.total.nyct=population.female.nyct) %>%
+  group_by(sex)
+
+#Determine underutilization using standard error for sex
+se.census.sex <- inner_join(sort.female, se.nyct.sex, c("EEO.Job.Group" = "EEO.Job.Group", "Sex"= "sex")) %>%
+  select(EEO.Job.Group, Sex, sex.total.nyct, population) %>%
+  mutate(p = sex.total.nyct/sum(sex.total.nyct),
+         pm = population/sum(population),
+         n = sum(sex.total.nyct),
+         nm = sum(population), 
+         spm = sqrt(((p*(1-p))/n)+((pm*(1-pm)/nm))),
+         z= (p-pm)/spm) %>%
+  filter(Sex != "Male") %>%
+  mutate(underutilization = ifelse(z< -1.96,"Yes","No"))
+```
+
+The formula for standard error is: 
+
+                                    ???((((p*(1-p))/n) + ((Pm * (1-Pm)/Nm))) )
+
+Spm = Square root (((p*(1-p))/n) + ((Pm * (1-Pm)/Nm))) 
+Where Spm = standard error of the difference between p and Pm 
+n = total number of NYC workers in a given EEO Job group 
+Nm = total number of qualified workers in the relevant labor market
+ p = proportion of workers in a given EEO job group in NYCT 
+Pm = proportion of workers in the group in the relevant labor market.  
+
+In statistics, the z-score is used to represent the number of standard deviations an observation is from the mean.  The statistical significance is attained when the inferred p-value (probability of the observed data) is less than the significance level of 5%. The formula for the z score is: 
+ 
+                                      (p-Pm)/Spm
+ 
+The .05 level of significance (5%) used for this analysis corresponds to a z-score whose absolute value is greater than 1.96. The z-score calculation is compared to the critical value (1.96) to determine if the null hypothesis will be rejected. For example, the percentage of NYCT's "Other" Office/Clerical workers is 2% of the 4,366 Office/Clerical workers and the Census data (relevant labor market) consist of 12% of the 638,921 Office/Clerical workers. When calculating the standard error and converting it to a z score the significant difference between the percentages of Hispanic Office/Clerical workers in NYCT and NYC can be determined. 
+
+                                    Spm = ???(((.02*(1-.02))/4,366) + ((.12*(1-.12)/638,921)))   
+
+                                     Spm = .0022
+                                          Calculating z:
+                                          z=((X-??))/??
+                                          
+                                         Or
+                                         
+                                      (p-Pm)/Spm
+                                      z = (.02-.12)/(.0022)= -46.28
+
+
+                                    .05 (|z|>=2 -- two standard deviations from the mean)
+                                     z = -46.28
+                                     
+NYCT would reject the null hypothesis that p=pm as the computed z score (-46.28) is less than -1.96 and conclude that the percentage of Hispanic Office/Clerical workers at NYCT differ from the expected value in NYC.  Therefore, an inference of underutilization ("Yes") can be made for Hispanic Office/Clerical workers at NYCT since the difference between p and Pm cannot be attributed solely to chance.  
+
+#### Plot illustrating under-representation 
+
+
+```{r}
+# plot NYCT data to determine underutlization by race for Two Standard Deviation Rule 
+ggplot(data = ci.census, 
+       aes(x = race, y = centered.p, ymin = lower, ymax = upper, colour = under)) +
+  theme_minimal() + 
+  facet_wrap(~EEO.Job.Group, nrow = 2) + 
+  geom_pointrange(size = 1.5, fatten = 1) + 
+  geom_hline(aes(yintercept = 0, linetype = "Available Workforce"), show.legend=TRUE) +
+  scale_linetype(name = "") + 
+  scale_y_continuous(labels = scales::percent) + 
+  coord_flip() +
+  theme(legend.position = "top", legend.box = "horizontal") + 
+  scale_color_manual(values = c("No"="blue", "Yes"="red"), name = "Underrepresented") + 
+  guides(color = guide_legend(override.aes = list(linetype = 0))) +
+  ylab("Delta From Available Workforce") + 
+  xlab("Race") +
+  ggtitle("NYCT EEO Job Group Representations Relative to Available Workforce") +
+  theme(text = element_text(size=10)) + theme(axis.text.x=
+                                                element_text(size  = 15,
+                                                             angle = 45,
+                                                             hjust = 1
+                                                             vjust = 1))
+```
+
+```{r}
+# plot NYCT data to determine underutlization by sex for Two Standard Deviation Rule 
+ggplot(data = ci.census.sex, 
+       aes(x = Sex, y = centered.p, ymin = lower, ymax = upper, colour = under)) +
+  theme_minimal() + 
+  facet_wrap(~EEO.Job.Group, nrow = 2) + 
+  geom_pointrange(size = 1.5, fatten = 1) + 
+  geom_hline(aes(yintercept = 0, linetype = "Available Workforce"), show.legend=TRUE) +
+  scale_linetype(name = "") + 
+  scale_y_continuous(labels = scales::percent) + 
+  coord_flip() +
+  theme(legend.position = "top", legend.box = "horizontal") + 
+  scale_color_manual(values = c("No"="blue", "Yes"="red"), name = "Underrepresented") + 
+  guides(color = guide_legend(override.aes = list(linetype = 0))) +
+  ylab("Delta From Available Workforce") +
+  xlab("Sex") + 
+  ggtitle("NYCT EEO Job Group Representations Relative to Available Workforce") +
+  theme(text = element_text(size=10)) + theme(axis.text.x=
+                                                element_text(size  = 15,
+                                                             angle = 45,
+                                                             hjust = 1,
+                                                             vjust = 1))
+```
+
+
+###Conclusion 
+
+Chart Analysis of Two Standard Deviation Rule with Confidence Intervals 
+
+The charts above illustrate the various EEO job groups cross classified by race and gender. The red and blue plots below represent the percentage of NYCT employees in a particular job group and race/gender relative to the relevant workforce (NYC). Moreover, reflects underrepresentation for the given EEO job groups by race and sex. The vertical black line on each graph represents a difference of 0% between the NYCT workforce and the available. Only the differences between the NYCT and available workforce were plotted relative to this line.  The calculation for the line is the NYCT EEO job group and race/gender data less the available NYC workforce, which represents the underrepresentation threshold. The horizontal bar for sex and race illustrates the confidence interval. For example, the percentage difference of Female Protective Services employed by NYCT from the proportion of the group in the available workforce of NYC. However, the available workforce estimate remains within the 95% confidence interval, so we cannot state with 95% confidence that underrepresentation exist. When it cannot be seen, the interval is smaller than the data point shape. 
+
+Underutilization exists for the following EEO-4 Job Groups: Officials/Clerical Officials/Administrators, Paraprofessional, Professionals, Protective Service, Service Maintenance, Skilled Craft, and Technician. The charts above provides details on which Gender and Race are underrepresented for a given Job group. 
